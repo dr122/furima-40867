@@ -25,8 +25,8 @@
 |------------------|------------|--------------------------------|
 | user             | references | null: false, foreign_key: true |
 | name             | string     | null: false                    |
-| description      | text       |                                |
-| price            | decimal    | null: false                    |
+| description      | text       | null: false                    |
+| price            | integer    | null: false                    |
 | category_id      | integer    | null: false                    |
 | condition_id     | integer    | null: false                    |
 | shipping_fee_id  | integer    | null: false                    |
@@ -55,15 +55,15 @@
 
 ## addressesテーブル
 
-| Column       | Type       | Options                        |
-|--------------|------------|--------------------------------|
-| order        | references | null: false, foreign_key: true |
-| postal_code  | string     | null: false                    |
-| prefecture   | string     | null: false                    |
-| city         | string     | null: false                    |
-| address_line | string     | null: false                    |
-| building     | string     |                                |
-| phone_number | string     | null: false                    |
+| Column           | Type       | Options                        |
+|------------------|------------|--------------------------------|
+| order            | references | null: false, foreign_key: true |
+| postal_code      | string     | null: false                    |
+| shipping_from_id | string     | null: false                    |
+| city             | string     | null: false                    |
+| address_line     | string     | null: false                    |
+| building         | string     |                                |
+| phone_number     | string     | null: false                    |
 
 ### Association
 
