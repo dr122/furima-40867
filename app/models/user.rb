@@ -8,12 +8,12 @@ class User < ApplicationRecord
   validates :birth_date, presence: true
 
   with_options presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: '全角文字を入力してください' } do
-    validates :first_name, message: '全角文字を入力してください'
-    validates :last_name, message: '全角文字を入力してください'
+    validates :first_name
+    validates :last_name
   end
 
   with_options presence: true, format: { with: /\A[ァ-ヶ一]+\z/, message: '全角カタカナを入力してください' } do
-    validates :first_name_kana, message: '全角カタカナを入力してください'
-    validates :last_name_kana, message: '全角カタカナを入力してください'
+    validates :first_name_kana
+    validates :last_name_kana
   end
 end
