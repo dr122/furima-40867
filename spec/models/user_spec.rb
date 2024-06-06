@@ -56,16 +56,42 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
 
+      it 'passwordが英字のみでは登録できない' do
+        @user.password = 'abcdef'
+        @user.password_confirmation = 'abcdef'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password must include both letters and numbers')
+      end
+
+      it 'passwordが数字のみでは登録できない' do
+        @user.password = '123456'
+        @user.password_confirmation = '123456'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password must include both letters and numbers')
+      end
+
       it 'first_nameが空では登録できない' do
         @user.first_name = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("First name can't be blank")
       end
 
+      it 'first_nameが半角文字では登録できない' do
+        @user.first_name = 'Taro'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('First name must be full-width characters')
+      end
+
       it 'last_nameが空では登録できない' do
         @user.last_name = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("Last name can't be blank")
+      end
+
+      it 'last_nameが半角文字では登録できない' do
+        @user.last_name = 'Yamada'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Last name must be full-width characters')
       end
 
       it 'first_name_kanaが空では登録できない' do
