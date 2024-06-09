@@ -13,10 +13,13 @@ class Item < ApplicationRecord
     validates :name
     validates :description
     validates :price
-    validates :category_id
-    validates :condition_id
-    validates :shipping_fee_id
-    validates :shipping_from_id
-    validates :shipping_day_id
+
+    with_options numericality: { other_than: 1 } do
+      validates :category_id
+      validates :condition_id
+      validates :shipping_fee_id
+      validates :shipping_from_id
+      validates :shipping_day_id
+    end
   end
 end
