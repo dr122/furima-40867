@@ -13,6 +13,11 @@ RSpec.describe Item, type: :model do
     end
 
     context '商品出品できないとき' do
+      it 'userが紐づいていない場合は登録できない' do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include('User must exist')
+      end
       it 'imageが空では出品できない' do
         @item.image = nil
         @item.valid?
@@ -28,28 +33,28 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Description can't be blank")
       end
-      it 'categoryが空では出品できない' do
-        @item.category_id = ''
+      it 'categoryが「---」では出品できない' do
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
-      it 'conditionが空では出品できない' do
-        @item.condition_id = ''
+      it 'conditionが「---」では出品できない' do
+        @item.condition_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Condition can't be blank")
       end
-      it 'shipping_feeが空では出品できない' do
-        @item.shipping_fee_id = ''
+      it 'shipping_feeが「---」では出品できない' do
+        @item.shipping_fee_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping fee can't be blank")
       end
-      it 'shipping_fromが空では出品できない' do
-        @item.shipping_from_id = ''
+      it 'shipping_fromが「---」では出品できない' do
+        @item.shipping_from_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping from can't be blank")
       end
-      it 'shipping_daysが空では出品できない' do
-        @item.shipping_days_id = ''
+      it 'shipping_daysが「---」では出品できない' do
+        @item.shipping_days_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping days can't be blank")
       end
