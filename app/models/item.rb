@@ -1,7 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :user
   has_one_attached :image
-  has_one :order
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
@@ -23,9 +22,5 @@ class Item < ApplicationRecord
       validates :shipping_from_id
       validates :shipping_day_id
     end
-  end
-
-  def on_sale?
-    order.nil?
   end
 end
