@@ -1,10 +1,11 @@
 class OrderAddress
   include ActiveModel::Model
 
-  attr_accessor :user_id, :item_id, :postal_code, :shipping_from_id, :city, :address_line, :building, :phone_number
+  attr_accessor :user_id, :item_id, :postal_code, :shipping_from_id, :city, :address_line, :building, :phone_number, :token
 
   validates :user_id, presence: { message: 'must exist' }
   validates :item_id, presence: { message: 'must exist' }
+  validates :token, presence: true
   validates :postal_code, presence: true, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Enter it as follows" }
   validates :shipping_from_id, numericality: { other_than: 1, message: "can't be blank" }
   validates :city, presence: true
