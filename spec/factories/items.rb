@@ -7,7 +7,7 @@ FactoryBot.define do
     condition_id { rand(2..7) }
     shipping_fee_id { rand(2..3) }
     shipping_from_id { rand(2..48) }
-    shipping_days_id { rand(2..4) }
+    shipping_day_id { rand(2..4) }
     price { rand(300..9_999_999) }
 
     after(:build) do |item|
