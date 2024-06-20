@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+const payment = () => {
   const priceInput = document.getElementById('item-price');
 
   if (priceInput) {
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
       profitDisplay.innerHTML = `${profit === 'NaN' ? 'NaN' : `${profit}`}`;
     });
   }
-});
+};
 
 function calculateFee(price) {
   return Math.floor(price * 0.1);
@@ -36,3 +36,6 @@ function calculateFee(price) {
 function calculateProfit(price, fee) {
   return Math.floor(price - fee);
 }
+
+window.addEventListener("turbo:load", payment);
+window.addEventListener("turbo:render", payment);
